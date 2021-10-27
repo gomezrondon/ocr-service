@@ -1,0 +1,12 @@
+version: '2.1'
+
+services:
+  react-app:
+    image: ocr-service:latest
+    environment:
+      - SERVER_PORT=8080
+      - BUCKET_NAME=123-temp-bucket
+      - PROFILE=default
+    ports:
+      - 8080:8080
+

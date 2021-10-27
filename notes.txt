@@ -1,0 +1,15 @@
+#compiar una carpeta dentro de un contenedor
+docker cp C:\temp\test2\ocr-service\src\main\resources\tessdata a32adfc24d2f:/workspace/tessdata
+docker cp C:\temp\test2\ocr-service\images a32adfc24d2f:/workspace/images
+
+
+curl -X POST -F file=@C:\temp\test2\ocr-service\src\main\resources\tessdata\eng.traineddata  http://localhost:8081/upload-file/gcp
+
+
+#unpacked jar into leyers for dockerfile
+java -Djarmode=layertools -jar .\build\libs\ocr-service.jar extract --destination target/extracted
+
+#buidl image
+docker build -t ocr-service:latest .
+
+

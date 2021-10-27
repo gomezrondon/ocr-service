@@ -1,0 +1,6 @@
+GET http://localhost:8080/v1/text
+Accept: text/plain
+
+###
+
+//URL [jar:file:/C:/temp/test2/ocr-service/build/libs/ocr-service.jar!/BOOT-INF/classes!/tessdata]
