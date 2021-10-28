@@ -78,7 +78,7 @@ public class Controller {
     @GetMapping("/v1/text/{image}")
     public String getTextFromImage(@PathVariable String image) throws TesseractException, IOException {
         var tesseract = new Tesseract();
-        tesseract.setDatapath("data");
+        tesseract.setDatapath("/usr/share/tessdata/");
         File file = new File("data/" + image);
         String text = tesseract.doOCR(file);
         System.out.println(text);

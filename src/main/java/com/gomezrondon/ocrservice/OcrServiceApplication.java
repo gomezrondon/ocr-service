@@ -35,14 +35,16 @@ public class OcrServiceApplication implements CommandLineRunner {
 
 	@Override
 	public void run(String... args)  {
+//		System.out.println(">>>>> 2" );
 		createDirectory("data");
+/*
 
 		String filePath = "data/eng.traineddata";
 		File file = new File(filePath);
 		if (!file.exists()) {
 			download(filePath);
 			System.out.println("download executed! " );
-		}
+		}*/
 
 	}
 

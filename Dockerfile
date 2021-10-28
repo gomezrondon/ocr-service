@@ -12,6 +12,11 @@ RUN apk update
 # Install tesseract library
 RUN apk add --no-cache tesseract-ocr
 
+# Download last language package
+RUN mkdir -p /usr/share/tessdata
+COPY ./tessdata/eng.traineddata /usr/share/tessdata/.
+
+
 # Second stage : Copy the extracted layers
 COPY --from=builder application/dependencies/ ./
 COPY --from=builder application/spring-boot-loader ./

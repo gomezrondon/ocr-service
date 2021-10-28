@@ -33,10 +33,13 @@ dependencies {
 test {
 	useJUnitPlatform()
 }
+
+
 /*
 bootBuildImage {
 	builder = 'paketobuildpacks/builder:tiny'
 	environment = ['BP_NATIVE_IMAGE': 'true', 'BP_NATIVE_IMAGE_BUILD_ARGUMENTS': '--initialize-at-build-time=org.apache.commons.logging.impl.SLF4JLocationAwareLog']
+
 }
 
 
