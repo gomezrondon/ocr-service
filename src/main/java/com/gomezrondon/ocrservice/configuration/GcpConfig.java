@@ -1,23 +1,17 @@
 package com.gomezrondon.ocrservice.configuration;
 
-import com.google.auth.oauth2.GoogleCredentials;
-import com.google.auth.oauth2.ServiceAccountCredentials;
-import com.google.cloud.storage.Storage;
-import com.google.cloud.storage.StorageOptions;
+
+import net.sourceforge.tess4j.Tesseract;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Profile;
-import org.springframework.core.io.ClassPathResource;
-import org.springframework.core.io.Resource;
 
-import java.io.IOException;
-import java.io.InputStream;
 
 @Configuration
 public class GcpConfig {
 
 
-    @Bean
+/*    @Bean
     @Profile("gcp")
     public Storage getGCPStorage() throws IOException {
         return StorageOptions.getDefaultInstance().getService();
@@ -36,6 +30,23 @@ public class GcpConfig {
                 .setCredentials(credentials)
                 .build()
                 .getService();
+    }*/
+
+    @Bean
+    @Profile("local")
+    public Tesseract getTesseractLocal() {
+        var tesseract = new Tesseract();
+        tesseract.setDatapath("tessdata");
+        return tesseract;
+    }
+
+
+    @Bean
+    @Profile("!local")
+    public Tesseract getTesseract() {
+        var tesseract = new Tesseract();
+        tesseract.setDatapath("/usr/share/tessdata/");
+        return tesseract;
     }
 
 }

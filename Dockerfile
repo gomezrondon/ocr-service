@@ -15,7 +15,7 @@ RUN apk add --no-cache tesseract-ocr
 # Download last language package
 RUN mkdir -p /usr/share/tessdata
 COPY ./tessdata/eng.traineddata /usr/share/tessdata/.
-
+COPY ./tessdata/spa.traineddata /usr/share/tessdata/.
 
 # Second stage : Copy the extracted layers
 COPY --from=builder application/dependencies/ ./

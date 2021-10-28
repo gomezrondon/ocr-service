@@ -1,15 +1,12 @@
 package com.gomezrondon.ocrservice;
 
-import com.google.cloud.storage.Blob;
-import com.google.cloud.storage.Storage;
-import org.springframework.beans.factory.annotation.Value;
+
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 //import org.springframework.nativex.hint.NativeHint;
 
 
-import java.io.File;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
@@ -20,14 +17,14 @@ import java.nio.file.Paths;
 @SpringBootApplication
 public class OcrServiceApplication implements CommandLineRunner {
 
-	@Value("${gcs-resource-test-bucket}")
+/*	@Value("${gcs-resource-test-bucket}")
 	private String bucketName;
 
 	private final Storage storage;
 
 	public OcrServiceApplication(Storage storage) {
 		this.storage = storage;
-	}
+	}*/
 
 	public static void main(String[] args) {
 		SpringApplication.run(OcrServiceApplication.class, args);
@@ -48,11 +45,11 @@ public class OcrServiceApplication implements CommandLineRunner {
 
 	}
 
-	public void download(String filePath) {
+/*	public void download(String filePath) {
 		Blob blob = storage.get(bucketName, "eng.traineddata");
 		blob.downloadTo(Paths.get(filePath));
 		System.out.println("File " + filePath + " donwloaded from bucket " + bucketName + " as " );
-	}
+	}*/
 
 	private void createDirectory(String folderName) {
 		String currentDir = System.getProperty("user.dir");
