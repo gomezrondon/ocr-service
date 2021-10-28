@@ -15,10 +15,12 @@ app.component('login-form',{
                 <input id="fileuploader" type="file" name="fileuploader">
                 <button>Upload</button> 
             </form>
+            {{ocr_text}}
             `,
     data(){
         return {
-            title: 'File Uploader'
+            title: 'File Uploader',
+            ocr_text:''
         }
     },
     methods: {
@@ -26,10 +28,13 @@ app.component('login-form',{
             this.sendFiles();
         },
         sendFiles() {
+            let language = "eng";
             let formData = new FormData();
             formData.append("file", fileuploader.files[0])
 
-            fetch('http://localhost:8080/upload-file', {
+            fetch('http://localhost:8080/upload-file/'+language, {
+            //     fetch('https://ocr-service-vilz3brbpa-uc.a.run.app/upload-file/'+language, {
+
                 method: 'post',
                 headers: {
                     // 'content-type': 'text/plain'
@@ -44,7 +49,10 @@ app.component('login-form',{
                     throw error;
                 }
                 console.log(res);
-
+                // console.log(res.text());
+                return res.text();
+            }).then(res => {
+                this.ocr_text = res;
             })
         }
     }
