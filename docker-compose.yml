@@ -9,4 +9,4 @@ services:
       - PROFILE=default
     ports:
       - 8080:8080
-
+#    command: sh -c "apk add tesseract-ocr"

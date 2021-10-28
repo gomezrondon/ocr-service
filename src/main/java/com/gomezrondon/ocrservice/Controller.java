@@ -80,11 +80,8 @@ public class Controller {
         var tesseract = new Tesseract();
         tesseract.setDatapath("data");
         File file = new File("data/" + image);
-        String text = "file NO EXISTE";
-        if (file.exists()) {
-             tesseract.doOCR(file);
-        }
-
+        String text = tesseract.doOCR(file);
+        System.out.println(text);
         return text;
     }
 
